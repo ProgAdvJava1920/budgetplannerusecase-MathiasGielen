@@ -20,8 +20,8 @@ public class BudgetPlannerFeeder {
 
 	Faker faker = new Faker();
 
-	String myAccountName = "Jos";
-	String myIBANNumber = "BE69771770897312";
+	String myAccountName = "Matty";
+	String myIBANNumber = "BE69420700830312";
 
 	public static void main(String[] args) throws IOException {
 		BudgetPlannerFeeder feeder = new BudgetPlannerFeeder();
@@ -37,6 +37,18 @@ public class BudgetPlannerFeeder {
 				writer.newLine();
 			}
 		}
+	}
+
+	private void addHeaderLine(List<String> data) {
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("Account name").append(",");
+		buffer.append("Account IBAN").append(",");
+		buffer.append("Counteraccount IBAN").append(",");
+		buffer.append("Transaction date").append(",");
+		buffer.append("Amount").append(",");
+		buffer.append("Currency").append(",");
+		buffer.append("Detail");
+		data.add(buffer.toString());
 	}
 
 	private void printLines(String[] dataLines) {
@@ -63,17 +75,4 @@ public class BudgetPlannerFeeder {
 		}
 		return data.toArray(new String[0]);
 	}
-
-	private void addHeaderLine(List<String> data) {
-		StringBuffer buffer = new StringBuffer();
-		buffer.append("Account name").append(",");
-		buffer.append("Account IBAN").append(",");
-		buffer.append("Counteraccount IBAN").append(",");
-		buffer.append("Transaction date").append(",");
-		buffer.append("Amount").append(",");
-		buffer.append("Currency").append(",");
-		buffer.append("Detail");
-		data.add(buffer.toString());
-	}
-
 }
